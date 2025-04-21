@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.social.socialmedia.entities.User;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer>{
-	Optional<User> findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Integer>  {
+
+  
+	
 }
