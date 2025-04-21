@@ -14,120 +14,117 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Table
 @Entity
-public class User implements UserDetails{
+public class User{
 	
 	@Id	
-	@Column(nullable = false)
-	private String id = UUID.randomUUID().toString();
+	private int id = UUID.randomUUID().hashCode();
 	
-	@Column(nullable = false, unique = true, length = 50)
+	
 	private String username;
 	
-	@Column(name="password_hash")
 	private String passwordHash;
 	
-	@Column
+
 	private String email;
 	
-	@Column(name = "is_enabled")
+
 	private boolean isEnabled=true;
 	
-	@Column(name="is_email_verfied")
+	
 	private boolean isEmailVerified=false;
 	
-	@Column(name="create_dt")
 	private LocalDateTime createDate;
 	
-	@Column(name="update_dt")
+
 	private LocalDateTime updateDate;
 
-	public String getId() {
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
 
-//	public String getUsername() {
-//		return username;
-//	}
+
+	public String getUsername() {
+		return username;
+	}
+
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+
 	public String getPasswordHash() {
 		return passwordHash;
 	}
+
 
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
 
+
 	public String getEmail() {
 		return email;
 	}
+
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+
 	public boolean isEnabled() {
 		return isEnabled;
 	}
+
 
 	public void setEnabled(boolean isEnabled) {
 		this.isEnabled = isEnabled;
 	}
 
+
 	public boolean isEmailVerified() {
 		return isEmailVerified;
 	}
+
 
 	public void setEmailVerified(boolean isEmailVerified) {
 		this.isEmailVerified = isEmailVerified;
 	}
 
+
 	public LocalDateTime getCreateDate() {
 		return createDate;
 	}
+
 
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
 	}
 
+
 	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
+
 
 	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+//	public String getUsername() {
+//		return username;
+//	}
 
-	@Override
-	public String getPassword() {
-		// TODO Auto-generated method stub
-		return email;
-	}
+	
 
-	@Override
-	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
-	
-	
 	
 }
