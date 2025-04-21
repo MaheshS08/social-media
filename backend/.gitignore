@@ -1,0 +1,5 @@
+/target/
+
+/backend/src/main/java/com/social/socialmedia/services/*.java
+
+
