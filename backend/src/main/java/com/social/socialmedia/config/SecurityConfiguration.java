@@ -18,11 +18,14 @@ public class SecurityConfiguration {
 	
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	private final AuthenticationProvider authenticationProvider;
+	private final CustomAuthenticationSuccessHandler successHandler;
 	
 	public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter,
-			AuthenticationProvider authenticationProvider) {
+			AuthenticationProvider authenticationProvider,
+			CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
 		this.jwtAuthenticationFilter = jwtAuthenticationFilter;
 		this.authenticationProvider = authenticationProvider;
+		this.successHandler = customAuthenticationSuccessHandler;
 	}
 	
 	
@@ -32,11 +35,13 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v1/auth/**")
+                        .requestMatchers("/api/v1/auth/**","/oauth2/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated()
+                        
                 )
+                .oauth2Login(oauth2 -> oauth2.successHandler(successHandler))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
