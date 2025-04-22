@@ -14,14 +14,13 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          {/* <Route
-            path="/"
+          <Route
+            path="/home"
             element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
+              
+                <Home />  
             }
-          /> */}
+          /> 
           <Route
             path="/messages"
             element={
