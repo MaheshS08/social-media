@@ -1,12 +1,17 @@
 "use client"
 import axios from "axios"
 import { createContext, useState, useEffect } from "react"
+import Home from "../pages/Home"
+import { useNavigate } from "react-router-dom"
 
 export const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
+  
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+
+
 
   useEffect(() => {
     // Check if user is already logged in
@@ -17,21 +22,33 @@ export function AuthProvider({ children }) {
     setLoading(false)
   }, [])
 
-  const login = (username, password) => {
+  const login = async (username, password) => {
  
+    console.log("jfjfjfjfjfjfj")
+    const formdata ={
+      username:username,
+      password:password
+    }
+    const response = await axios.post("http://localhost:8090/login", formdata)
+
+    if(response.data === "Login Successful")
+    {
+      return true;
+    }
    
   }
 
   const register = async (name, username, email, password) => {
+    console.log("hdhfhfhfh")
     // Mock register functionality
     const mockUser = {
-      id: 1,
       name: name,
       username: username,
       email: email,
       password: password
     };
     console.log("hello")
+    console.log(mockUser)
 
     const response = await axios.post("http://localhost:8090/register", mockUser);
     console.log(response);

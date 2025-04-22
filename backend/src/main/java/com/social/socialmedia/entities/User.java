@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -29,17 +30,20 @@ public class User implements UserDetails{
 
 	
 	@Id	
-	private int id = UUID.randomUUID().hashCode();
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	private String username;
 	
-	private String passwordHash;
+
+
+	private String password;
 	
 
 	private String email;
 	
 
+<<<<<<< HEAD
 	private boolean isEnabled=true;
 	
 
@@ -47,17 +51,17 @@ public class User implements UserDetails{
 	private boolean isEmailVerified=false;
 	
 	private LocalDateTime createDate;
+=======
+>>>>>>> 3d349a034a4eb79a09f4d3a5fe67de16c7145efb
 	
 
-	private LocalDateTime updateDate;
 
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -66,13 +70,13 @@ public class User implements UserDetails{
 	}
 
 
-	public String getPasswordHash() {
-		return passwordHash;
+	public String getPassword() {
+		return password;
 	}
 
 
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
@@ -86,44 +90,7 @@ public class User implements UserDetails{
 	}
 
 
-	public boolean isEnabled() {
-		return isEnabled;
-	}
-
-
-	public void setEnabled(boolean isEnabled) {
-		this.isEnabled = isEnabled;
-	}
-
-
-	public boolean isEmailVerified() {
-		return isEmailVerified;
-	}
-
-
-	public void setEmailVerified(boolean isEmailVerified) {
-		this.isEmailVerified = isEmailVerified;
-	}
-
-
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-
-
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
-
-
-	public LocalDateTime getUpdateDate() {
-		return updateDate;
-	}
-
-
-	public void setUpdateDate(LocalDateTime updateDate) {
-		this.updateDate = updateDate;
-	}
+	
 
 
 	@Override

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useContext } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../context/AuthContext"
 import "./Login.css"
 
@@ -11,7 +11,7 @@ function Login() {
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
-
+const navigate = useNavigate();
   const { user, login, register } = useContext(AuthContext)
 
   const handleSubmit = (e) => {
@@ -19,13 +19,23 @@ function Login() {
     console.log("hhhhhhhh")
     if(isLogin)
     {
-      login(username,password)
+      const success = login(username,password);
+      if(success)
+      {
+        navigate("/home")
+      }
+
     }
     else
       register(name, username, email, password)
   }
 
- 
+
+  const handlegooglelogin = () =>
+  {
+      window.location.href="http://localhost:8090/oauth2/authorization/google";
+      
+  }
 
   return (
     <div className="auth-container">
@@ -92,7 +102,7 @@ function Login() {
           <span>OR</span>
         </div>
 
-        <button className="social-auth-button">Continue with Google</button>
+        <button className="social-auth-button" onClick={handlegooglelogin}>Continue with Google</button>
 
         <div className="auth-switch">
           {isLogin ? (
