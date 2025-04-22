@@ -13,9 +13,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Table
+@Data
+@Table(name = "users")
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails{
 	
 	@Id	
@@ -34,7 +42,7 @@ public class User implements UserDetails{
 	@Column(name = "is_enabled")
 	private boolean isEnabled=true;
 	
-	@Column(name="is_email_verfied")
+	@Column(name="is_email_verified")
 	private boolean isEmailVerified=false;
 	
 	@Column(name="create_dt")
