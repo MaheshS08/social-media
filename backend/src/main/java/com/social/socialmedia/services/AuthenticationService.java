@@ -38,6 +38,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
     	var user = new User();
     	user.setUsername(request.getUsername());
+    	user.setFullname(request.getFullname());
     	user.setPasswordHash(passwordEncoder.encode(request.getPassword()));
     	user.setEmail(request.getEmail());
     	

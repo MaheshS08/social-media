@@ -5,3 +5,11 @@
 
 /.apt_generated/
 /.apt_generated_tests/
+
+
+/src/main/resources/google-oauth.properties
+
+
+.env
+
+.metadata/
