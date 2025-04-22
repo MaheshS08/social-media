@@ -19,6 +19,12 @@ public class SecurityConfiguration {
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	private final AuthenticationProvider authenticationProvider;
 	
+	public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter,
+			AuthenticationProvider authenticationProvider) {
+		this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+		this.authenticationProvider = authenticationProvider;
+	}
+	
 	
 
     @Bean
