@@ -9,13 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.social.socialmedia.entities.User;
 
 @Repository
-<<<<<<< HEAD
 public interface UserRepository extends JpaRepository<User, Integer>{
 	Optional<User> findByEmail(String email);
-=======
-public interface UserRepository extends JpaRepository<User, Integer>  {
-
-  
-	
->>>>>>> master
 }

@@ -18,7 +18,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-<<<<<<< HEAD
+
 @Data
 @Table(name = "users")
 @Entity
@@ -26,10 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails{
-=======
-@Entity
-public class User{
->>>>>>> master
+
 	
 	@Id	
 	private int id = UUID.randomUUID().hashCode();
@@ -45,11 +42,8 @@ public class User{
 
 	private boolean isEnabled=true;
 	
-<<<<<<< HEAD
+
 	@Column(name="is_email_verified")
-=======
-	
->>>>>>> master
 	private boolean isEmailVerified=false;
 	
 	private LocalDateTime createDate;
@@ -66,12 +60,6 @@ public class User{
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
 
 	public void setUsername(String username) {
 		this.username = username;
@@ -137,7 +125,7 @@ public class User{
 		this.updateDate = updateDate;
 	}
 
-<<<<<<< HEAD
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -155,17 +143,5 @@ public class User{
 		// TODO Auto-generated method stub
 		return email;
 	}
-	
-	
-	
-=======
->>>>>>> master
-	
-//	public String getUsername() {
-//		return username;
-//	}
-
-	
-
-	
+		
 }
