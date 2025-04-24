@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.Arrays;
 /**
  * Hello world!
  */
@@ -25,7 +26,6 @@ public class SocialMediaApplication {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
     	return new WebMvcConfigurer() {
-
     		public void addCorsMappings(CorsRegistry corsRegistry) {
     			corsRegistry.addMapping("/**")
     			.allowedOrigins("http://localhost:5173");
