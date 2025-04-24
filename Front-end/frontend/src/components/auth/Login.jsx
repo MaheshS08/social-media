@@ -14,19 +14,25 @@ function Login() {
 	const navigate = useNavigate();
 	const { user, login, register } = useContext(AuthContext);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log("hhhhhhhh");
 		if (isLogin) {
-			const success = login(username, password);
+			const success = await login(username, password);
+			console.log(success)
 			if (success) {
+				console.log("fjfjfj")
 				navigate("/home");
+			}
+			else
+			{
+				alert("please enter valid username and password");
 			}
 		} else register(name, username, email, password);
 	};
 
 	const handlegooglelogin = () => {
-		window.location.href = "http://localhost:8080/oauth2/authorization/google";
+		window.location.href = "http://localhost:8090/oauth2/authorization/google";
 	};
 
 	return (

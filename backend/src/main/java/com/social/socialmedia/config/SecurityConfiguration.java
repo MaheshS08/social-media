@@ -25,16 +25,16 @@ public class SecurityConfiguration {
 	private final JwtAuthenticationFilter jwtAuthenticationFilter;
 	private final AuthenticationProvider authenticationProvider;
 	private final CustomAuthenticationSuccessHandler successHandler;
-	private final GoogleConfig googleConfig;
+	
 	
 	public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter,
 			AuthenticationProvider authenticationProvider,
-			CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler,
-			GoogleConfig googleConfig) {
+			CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler
+			) {
 		this.jwtAuthenticationFilter = jwtAuthenticationFilter;
 		this.authenticationProvider = authenticationProvider;
 		this.successHandler = customAuthenticationSuccessHandler;
-		this.googleConfig = googleConfig;
+		
 	}
 	
 	

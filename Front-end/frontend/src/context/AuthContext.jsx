@@ -25,14 +25,30 @@ export function AuthProvider({ children }) {
 			username: username,
 			password: password,
 		};
-		const response = await axios.post(
-			"http://localhost:8080/api/v1/auth/login",
-			formdata
-		);
 
-		if (response.data === "Login Successful") {
-			return true;
+	try{
+	const response = await axios.post(
+		"http://localhost:8090/api/v1/auth/login",
+		formdata
+	);
+	console.log(response.data.token)
+
+	if(response.status == 200)
+	{
+		console.log("jkj")
+		sessionStorage.setItem("token", response.data.token)
+		return true;
+		
+	}
+	else{
+		return false;
+	}
 		}
+		catch (error) {
+			console.error(error);
+			return false;
+		}
+		
 	};
 
 	const register = async (name, username, email, password) => {
@@ -48,7 +64,7 @@ export function AuthProvider({ children }) {
 		console.log(mockUser);
 
 		const response = await axios.post(
-			"http://localhost:8080/api/v1/auth/register",
+			"http://localhost:8090/api/v1/auth/register",
 			mockUser
 		);
 		console.log(response);

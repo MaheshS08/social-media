@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
 
     private final UserRepository userRepository;
@@ -48,8 +47,9 @@ public class AuthenticationService {
     	
     	var authResponse = new AuthenticationResponse();
     	authResponse.setToken(token);
-    	
-    	
+
+		
+    
     	return authResponse;    	
     }
     
@@ -58,12 +58,16 @@ public class AuthenticationService {
     			request.getUsername(), 
     			request.getPassword())
     		);
+
+			System.out.println("helloooooooooooooooo");
     	
     	var user = userRepository.findByEmail(request.getUsername()).orElseThrow();
     	var token = jwtService.generateToken(user);
     	
     	var authResponse = new AuthenticationResponse();
     	authResponse.setToken(token);
+
+		System.out.println(authResponse);
     	
     	return authResponse;
     	
